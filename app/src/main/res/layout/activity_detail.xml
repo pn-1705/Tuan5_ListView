@@ -15,9 +15,9 @@
         android:textSize="30dp" />
 
     <TextView
-        android:layout_below="@+id/thongtin"
+        android:id="@+id/detailtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:id="@+id/detailtitle"/>
+        android:layout_below="@+id/thongtin"
+        android:textSize="30dp" />
 </RelativeLayout>

@@ -44,7 +44,7 @@ public class Adapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.hinh);
         tvName.setText(items.get(i).getTen());
         tvMota.setText(items.get(i).getMota());
-        tvGia.setText(items.get(i).getGia());
+        tvGia.setText(items.get(i).getGia() + "VNĐ");
         imageView.setImageResource(items.get(i).getImage());
         return view;
     }

@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
+    private Button btn_addProduct;
+    private EditText edt_name, edt_mt, edt_price;
     ArrayList<Items> items = new ArrayList<>();
     Adapter adapter;
     Boolean kt = false;
@@ -25,12 +29,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btn_addProduct = (Button) findViewById(R.id.btn_addproduct);
+        edt_name = (EditText) findViewById(R.id.edt_ten);
+        edt_mt = (EditText) findViewById(R.id.edt_mota);
+        edt_price = (EditText) findViewById(R.id.edt_price);
+
+
         listView = (ListView) findViewById(R.id.list_view);
-        items.add(new Items("Item 1", "Information of item 1", "3", R.drawable.item1));
-        items.add(new Items("Item 2", "Information of item 2", "6", R.drawable.item2));
-        items.add(new Items("Item 3", "Information of item 3", "10", R.drawable.img));
-        items.add(new Items("Item 4", "Information of item 4", "6", R.drawable.img_1));
-        items.add(new Items("Item 5", "Information of item 5", "11", R.drawable.img_2));
+        items.add(new Items("iPhone 12", "Đen, 128G", "30.000.000", R.drawable.iphone__ky2k6x5u6vue_og));
+        items.add(new Items("iPhone 14 Pro Max", "Trắng, 64G", "10.190.000", R.drawable.ip12));
+        items.add(new Items("iPhone 13 Pro", "Xanh rêu, 256G", "15.990.000", R.drawable.ip14));
+        items.add(new Items("iPhone 11 Pro Max", "Đen, 64G", "10.490.000", R.drawable.ip10));
+        items.add(new Items("iPhone XS Max", "Vàng, 128G", "8.590.000", R.drawable.images));
 
         adapter = new Adapter(MainActivity.this, items);
         listView.setAdapter(adapter);
@@ -52,21 +62,29 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        btn_addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                items.add(new Items(edt_name.getText().toString(), edt_mt.getText().toString(), edt_price.getText().toString(),0));
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     public void Xacnhanxoa(final int pos) {
         AlertDialog.Builder alertDiaLog = new AlertDialog.Builder(MainActivity.this);
-        alertDiaLog.setTitle("Thong bao");
+        alertDiaLog.setTitle("Xác nhận");
         alertDiaLog.setIcon(R.mipmap.ic_launcher);
-        alertDiaLog.setMessage("Ban co muon xoa");
-        alertDiaLog.setPositiveButton("Co", new DialogInterface.OnClickListener() {
+        alertDiaLog.setMessage("Bạn có chắc chắn muốn xóa ?");
+        alertDiaLog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 items.remove(pos);
                 adapter.notifyDataSetChanged();
             }
         });
-        alertDiaLog.setNegativeButton("Khong", new DialogInterface.OnClickListener() {
+        alertDiaLog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

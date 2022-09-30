@@ -4,7 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edt_ten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên sản phẩm"></EditText>
+
+    <EditText
+        android:id="@+id/edt_mota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô tả sản phẩm"></EditText>
+
+    <EditText
+        android:id="@+id/edt_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá"></EditText>
+
+    <Button
+        android:id="@+id/btn_addproduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="THÊM"></Button>
 
     <ListView
         android:id="@+id/list_view"
